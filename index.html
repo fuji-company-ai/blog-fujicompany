@@ -1,0 +1,84 @@
+---
+layout: default
+title: "AIツール・副業・技術情報ブログ"
+description: "AIツールの活用法、副業で収益を上げる方法、最新技術情報をわかりやすく解説します。"
+---
+
+<div class="home-hero">
+  <h1>AIと技術で、収益を最大化する</h1>
+  <p>最新AIツールの使い方・副業収益化・技術情報を毎週3回更新</p>
+</div>
+
+<!-- Featured / Latest Posts -->
+<section class="posts-section">
+  <h2 class="section-title">最新記事</h2>
+
+  <div class="posts-grid">
+    {% for post in site.posts limit:9 %}
+    <article class="post-card">
+      {% if post.thumbnail %}
+      <div class="post-card-image">
+        <img src="{{ post.thumbnail }}" alt="{{ post.title }}" loading="lazy">
+      </div>
+      {% endif %}
+      <div class="post-card-body">
+        {% if post.categories %}
+          <div class="post-card-categories">
+            {% for category in post.categories limit:1 %}
+              <span class="category-badge">{{ category }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <h3 class="post-card-title">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </h3>
+        <p class="post-card-excerpt">
+          {{ post.description | default: post.excerpt | strip_html | truncate: 100 }}
+        </p>
+        <div class="post-card-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%Y年%-m月%-d日" }}
+          </time>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  {% if site.posts.size > 9 %}
+  <div class="load-more">
+    <a href="{{ site.baseurl }}/archive/" class="btn-primary">すべての記事を見る</a>
+  </div>
+  {% endif %}
+</section>
+
+<!-- Categories -->
+<section class="categories-section">
+  <h2 class="section-title">カテゴリ</h2>
+  <div class="categories-grid">
+    <a href="{{ site.baseurl }}/category/ai-tools/" class="category-card">
+      <span class="category-icon">🤖</span>
+      <span class="category-name">AIツール</span>
+      <span class="category-desc">ChatGPT・Claude・Gemini活用法</span>
+    </a>
+    <a href="{{ site.baseurl }}/category/side-income/" class="category-card">
+      <span class="category-icon">💰</span>
+      <span class="category-name">副業・収益化</span>
+      <span class="category-desc">月3万〜を目指す副業戦略</span>
+    </a>
+    <a href="{{ site.baseurl }}/category/tech/" class="category-card">
+      <span class="category-icon">⚙️</span>
+      <span class="category-name">技術・ツール</span>
+      <span class="category-desc">便利ツールの使い方・自動化</span>
+    </a>
+  </div>
+</section>
+
+<!-- Amazon Affiliate Banner Area -->
+<section class="affiliate-section">
+  <div class="affiliate-banner" id="amazon-banner">
+    <!-- Amazon affiliate banners inserted via JS -->
+    <p class="affiliate-label">おすすめ商品</p>
+    <div id="amazon-product-links"></div>
+  </div>
+</section>

@@ -1,0 +1,109 @@
+---
+layout: default
+---
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    {% if page.categories %}
+    <div class="post-categories">
+      {% for category in page.categories %}
+        <a href="{{ site.baseurl }}/category/{{ category | slugify }}/" class="category-badge">{{ category }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+
+    <div class="post-meta">
+      <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: "%Y年%-m月%-d日" }}
+      </time>
+      {% if page.author %}
+        <span class="post-author">by {{ page.author }}</span>
+      {% endif %}
+      {% if page.reading_time %}
+        <span class="reading-time">約{{ page.reading_time }}分で読めます</span>
+      {% endif %}
+    </div>
+
+    {% if page.description %}
+    <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <!-- Table of Contents (auto-generated via JS) -->
+  <div id="toc-container" class="toc-box">
+    <p class="toc-title">目次</p>
+    <div id="toc"></div>
+  </div>
+
+  <!-- Affiliate Disclosure -->
+  <div class="affiliate-notice">
+    <p>※本記事にはアフィリエイトリンクが含まれています。ご購入の際、当サイトが少額の手数料を受け取る場合があります。</p>
+  </div>
+
+  <div class="post-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    {% if page.tags %}
+    <div class="post-tags">
+      <span>タグ: </span>
+      {% for tag in page.tags %}
+        <a href="{{ site.baseurl }}/tags/{{ tag | slugify }}/" class="tag">{{ tag }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Social Share -->
+    <div class="share-buttons">
+      <p class="share-label">この記事をシェア:</p>
+      <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}"
+         target="_blank" rel="noopener" class="share-btn share-twitter">Twitter</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}"
+         target="_blank" rel="noopener" class="share-btn share-facebook">Facebook</a>
+      <a href="https://b.hatena.ne.jp/entry/{{ site.url }}{{ site.baseurl }}{{ page.url }}"
+         target="_blank" rel="noopener" class="share-btn share-hatena">はてブ</a>
+    </div>
+
+    <!-- Related Posts -->
+    {% if site.related_posts.size > 0 %}
+    <div class="related-posts">
+      <h3>関連記事</h3>
+      <ul>
+        {% for post in site.related_posts limit:3 %}
+          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </footer>
+
+</article>
+
+<script>
+// Auto-generate Table of Contents
+document.addEventListener('DOMContentLoaded', function() {
+  const content = document.querySelector('.post-content');
+  const toc = document.getElementById('toc');
+  if (!content || !toc) return;
+
+  const headings = content.querySelectorAll('h2, h3');
+  if (headings.length < 2) {
+    document.getElementById('toc-container').style.display = 'none';
+    return;
+  }
+
+  let tocHtml = '<ul>';
+  headings.forEach(function(h, i) {
+    const id = 'heading-' + i;
+    h.id = id;
+    const indent = h.tagName === 'H3' ? ' style="padding-left:1.5em"' : '';
+    tocHtml += '<li' + indent + '><a href="#' + id + '">' + h.textContent + '</a></li>';
+  });
+  tocHtml += '</ul>';
+  toc.innerHTML = tocHtml;
+});
+</script>

@@ -1,0 +1,483 @@
+/* ========================================
+   フジカンパニーブログ - メインスタイルシート
+   ======================================== */
+
+/* CSS Variables */
+:root {
+  --primary: #2c7be5;
+  --primary-dark: #1a5fbf;
+  --accent: #ff6b35;
+  --text: #2d3748;
+  --text-light: #718096;
+  --bg: #ffffff;
+  --bg-light: #f7fafc;
+  --bg-dark: #1a202c;
+  --border: #e2e8f0;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-hover: 0 4px 16px rgba(0,0,0,0.14);
+  --radius: 8px;
+  --max-width: 1100px;
+  --content-width: 780px;
+}
+
+/* Reset & Base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", "メイリオ", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.8;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Container */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ========================================
+   Header
+   ======================================== */
+.site-header {
+  background: var(--bg-dark);
+  color: #fff;
+  padding: 1.25rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+.site-title:hover { text-decoration: none; opacity: 0.9; }
+
+.site-description {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  margin: 0.15rem 0 0.75rem;
+}
+
+.site-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.site-nav a {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.site-nav a:hover { color: #fff; text-decoration: none; }
+
+/* ========================================
+   Main Content
+   ======================================== */
+.main-content { padding: 2.5rem 0 4rem; }
+
+/* ========================================
+   Home Page
+   ======================================== */
+.home-hero {
+  background: linear-gradient(135deg, var(--primary), #6c3de5);
+  color: #fff;
+  padding: 3rem 2rem;
+  border-radius: var(--radius);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.home-hero h1 { font-size: 2rem; margin-bottom: 0.75rem; }
+.home-hero p { font-size: 1.1rem; opacity: 0.9; }
+
+/* Section Title */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--primary);
+}
+
+/* ========================================
+   Post Cards (Grid)
+   ======================================== */
+.posts-section { margin-bottom: 4rem; }
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.post-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.post-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.post-card-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.post-card-body { padding: 1.25rem; }
+
+.post-card-categories { margin-bottom: 0.5rem; }
+
+.post-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+.post-card-title a { color: var(--text); }
+.post-card-title a:hover { color: var(--primary); text-decoration: none; }
+
+.post-card-excerpt {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.post-card-meta {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* Category Badge */
+.category-badge {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: 20px;
+  margin-right: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+.category-badge:hover { background: var(--primary-dark); text-decoration: none; }
+
+/* Load More */
+.load-more { text-align: center; margin-top: 2rem; }
+.btn-primary {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--primary-dark); text-decoration: none; }
+
+/* ========================================
+   Categories Section
+   ======================================== */
+.categories-section { margin-bottom: 4rem; }
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.category-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.category-icon { font-size: 2.5rem; margin-bottom: 0.6rem; }
+.category-name { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+.category-desc { font-size: 0.85rem; color: var(--text-light); }
+
+/* ========================================
+   Article / Post
+   ======================================== */
+.post-header { margin-bottom: 2rem; }
+
+.post-categories { margin-bottom: 1rem; }
+
+.post-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.post-description {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  padding: 1rem;
+  background: var(--bg-light);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* Table of Contents */
+.toc-box {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+}
+.toc-title {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+#toc ul { padding-left: 1.2rem; }
+#toc li { margin: 0.3rem 0; font-size: 0.95rem; }
+#toc a { color: var(--primary); }
+
+/* Affiliate Notice */
+.affiliate-notice {
+  background: #fffbeb;
+  border: 1px solid #f6ad55;
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+  font-size: 0.85rem;
+  color: #744210;
+}
+
+/* Post Content Typography */
+.post-content {
+  max-width: var(--content-width);
+}
+.post-content h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border);
+}
+.post-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 2rem 0 0.75rem;
+  color: var(--primary-dark);
+}
+.post-content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.5rem;
+}
+.post-content p { margin: 1rem 0; }
+.post-content ul, .post-content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+.post-content li { margin: 0.4rem 0; }
+.post-content blockquote {
+  border-left: 4px solid var(--primary);
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  background: var(--bg-light);
+  color: var(--text-light);
+  font-style: italic;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.post-content pre {
+  background: var(--bg-dark);
+  color: #e2e8f0;
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+.post-content code {
+  background: #edf2f7;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: "Fira Code", "Source Code Pro", monospace;
+}
+.post-content pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+.post-content th, .post-content td {
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+}
+.post-content th { background: var(--bg-light); font-weight: 700; }
+.post-content tr:nth-child(even) td { background: #f9fafb; }
+
+/* Affiliate Link Style */
+.post-content a.affiliate-link,
+.amazon-link {
+  display: inline-block;
+  background: #ff9900;
+  color: #111;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+  transition: background 0.2s;
+}
+.amazon-link:hover { background: #e68a00; text-decoration: none; }
+
+/* Amazon Product Box */
+.amazon-product-box {
+  border: 2px solid #ff9900;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin: 2rem 0;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  background: #fffdf5;
+}
+.amazon-product-image { flex-shrink: 0; width: 100px; }
+.amazon-product-info { flex: 1; }
+.amazon-product-title { font-weight: 700; margin-bottom: 0.5rem; }
+.amazon-product-price { color: #b12704; font-weight: 700; margin-bottom: 0.75rem; }
+
+/* Post Footer */
+.post-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+
+.post-tags { margin-bottom: 1.5rem; }
+.tag {
+  display: inline-block;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.8rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  margin-right: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+.tag:hover { background: var(--primary); color: #fff; border-color: var(--primary); text-decoration: none; }
+
+/* Share Buttons */
+.share-buttons { margin-bottom: 2rem; }
+.share-label { font-weight: 600; margin-bottom: 0.75rem; font-size: 0.9rem; }
+.share-btn {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+  transition: opacity 0.2s;
+}
+.share-btn:hover { opacity: 0.85; text-decoration: none; }
+.share-twitter { background: #1da1f2; }
+.share-facebook { background: #1877f2; }
+.share-hatena { background: #008fde; }
+
+/* Related Posts */
+.related-posts h3 { font-size: 1.2rem; margin-bottom: 1rem; }
+.related-posts ul { list-style: none; padding: 0; }
+.related-posts li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+.related-posts li:last-child { border-bottom: none; }
+
+/* ========================================
+   Affiliate Section (homepage)
+   ======================================== */
+.affiliate-section { margin-bottom: 3rem; }
+.affiliate-banner {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.affiliate-label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.site-footer {
+  background: var(--bg-dark);
+  color: rgba(255,255,255,0.7);
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+}
+.footer-links { margin-bottom: 0.75rem; }
+.footer-links a { color: rgba(255,255,255,0.7); margin: 0 0.5rem; }
+.footer-links a:hover { color: #fff; }
+.affiliate-disclosure {
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(255,255,255,0.5);
+}
+.copyright { color: rgba(255,255,255,0.4); }
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+  .home-hero h1 { font-size: 1.5rem; }
+  .post-title { font-size: 1.5rem; }
+  .posts-grid { grid-template-columns: 1fr; }
+  .categories-grid { grid-template-columns: 1fr; }
+  .site-nav { gap: 1rem; }
+  .amazon-product-box { flex-direction: column; }
+  .amazon-product-image { width: 120px; }
+}

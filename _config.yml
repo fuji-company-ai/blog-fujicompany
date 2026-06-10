@@ -1,0 +1,59 @@
+title: "フジカンパニーブログ"
+description: "AIツール・副業・技術情報を発信するブログ"
+url: "https://dysonkiller.github.io"
+baseurl: "/blog-fujicompany"
+
+author:
+  name: "フジカンパニー"
+  email: "venezia4089@gmail.com"
+
+# Amazon Associates
+amazon_associate_tag: "fujicompany-22"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Theme settings
+theme_color: "#2c7be5"
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /posts/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "フジカンパニー"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .env
+  - scripts/
+  - "*.sh"
+
+# SEO
+twitter:
+  username: fujicompany
+  card: summary_large_image
+
+# Feed
+feed:
+  posts_limit: 20
