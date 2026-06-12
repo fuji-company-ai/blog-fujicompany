@@ -6,11 +6,9 @@ categories:
   - ai-tools
 tags:
   - claude opus 副業
-description: "Claude Opus 4.8の完全ガイド記事を作成します。SEOを考慮し、自然な形でキーワードを組み込"
+description: "Claude Opus 4.8の実力をGPT-4と比較しながら解説。副業ライティング・コーディング・分析での使い分けと、実際に試した結果を正直に書いた実践ガイド。"
 amazon_associate_tag: "fujicompany-22"
 ---
-
-Claude Opus 4.8の完全ガイド記事を作成します。SEOを考慮し、自然な形でキーワードを組み込みながら、副業活用に焦点を当てた実践的な内容にします。
 
 ## Claude Opus 4.8 完全ガイド：GPT-4を超えた最強AIの使い方
 
