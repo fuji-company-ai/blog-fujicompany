@@ -1,11 +1,11 @@
 title: "フジカンパニーブログ"
 description: "AIツール・副業・技術情報を発信するブログ"
-url: "https://dysonkiller.github.io"
+url: "https://fuji-company-ai.github.io"
 baseurl: "/blog-fujicompany"
 
 author:
   name: "フジカンパニー"
-  email: "venezia4089@gmail.com"
+  email: "fujicompany.contact@gmail.com"
 
 # Amazon Associates
 amazon_associate_tag: "fujicompany-22"
